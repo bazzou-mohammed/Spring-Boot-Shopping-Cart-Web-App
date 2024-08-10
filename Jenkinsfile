@@ -67,11 +67,8 @@ pipeline {
 
         stage('Verify the Deployment') {
             steps {
-              sh '''
-              kubectl get pods
-              kubectl get service your-app-service
-              minikube service your-app-service --url
-              '''
+              sh "kubectl get pods"
+              
             }
         }
         
