@@ -60,7 +60,7 @@ pipeline {
 
         stage('Deploy To Kubernetes') {
             steps {
-                sh "kubectl apply -f deployment-service.yaml"
+                sh "kubectl apply -f deploymentservice.yml"
 
             }
         }
