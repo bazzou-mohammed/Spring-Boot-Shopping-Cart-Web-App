@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: Spring-Boot-Shopping-Cart-Web-App-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: Spring-Boot-Shopping-Cart-Web-App
+  template:
+    metadata:
+      labels:
+        app: Spring-Boot-Shopping-Cart-Web-App
+    spec:
+      containers:
+      - name: Spring-Boot-Shopping-Cart-Web-App
+        image: bazzoumohammed/shopping:latest
+        ports:
+        - containerPort: 8070
