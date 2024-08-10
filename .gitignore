@@ -1,6 +1,6 @@
 target/
-kubectl/
-minikube-linux-amd64/
+kubectl
+minikube-linux-amd64
 !.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
