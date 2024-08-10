@@ -2,7 +2,6 @@ pipeline {
     agent any
     
     tools {
-        // Installer la version Maven configurée en tant que "M3" et l'ajouter au chemin d'accès.
         jdk 'jdk11'
         jdk 'jdk-17'
         maven 'maven3'
@@ -11,7 +10,7 @@ pipeline {
     environment {
         DOCKER_CREDENTIALS_ID = "docker-credentials"
         DOCKER_REGISTRY = "bazzoumohammed"
-        DOCKER_IMAGE_NAME = "shopping"  // Nom en minuscules
+        DOCKER_IMAGE_NAME = "shopping"  
         DOCKER_IMAGE_TAG = "latest"
     }
 
