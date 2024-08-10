@@ -57,16 +57,33 @@ pipeline {
                 }
             }
         }
-        
-        stage('Docker Deploy To Container') {
+
+        stage('Deploy To Kubernetes') {
             steps {
-                script {
-                    // Login to Docker Hub
-                    withDockerRegistry(credentialsId: DOCKER_CREDENTIALS_ID) {
-                      sh 'docker run -d --name shopping-cart -p 8070:8070 ${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}' 
-                    }
-                }
+                sh "kubectl apply -f deployment-service.yaml"
+
             }
         }
+
+        stage('Verify the Deployment') {
+            steps {
+              sh '''
+              kubectl get pods
+              kubectl get service your-app-service
+              minikube service your-app-service --url
+              '''
+            }
+        }
+        
+        // stage('Docker Deploy To Container') {
+        //     steps {
+        //         script {
+        //             // Login to Docker Hub
+        //             withDockerRegistry(credentialsId: DOCKER_CREDENTIALS_ID) {
+        //               sh 'docker run -d --name shopping-cart -p 8070:8070 ${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}' 
+        //             }
+        //         }
+        //     }
+        // }
     }
 }
