@@ -27,16 +27,17 @@ pipeline {
             }
         }
         
-        // stage('SonarQube analysis') {
-        //     steps {
-        //         // Execute SonarQube analysis
-        //         script {
-        //             withSonarQubeEnv('sonar_server') {
-        //                 sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
-        //             }
-        //         }
-        //     }
-        // }
+        //sonar scanner using maven plugin
+        stage('SonarQube analysis') {
+            steps {
+                // Execute SonarQube analysis
+                script {
+                    withSonarQubeEnv('sonar_server') {
+                        sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
+                    }
+                }
+            }
+        }
         
         stage('Build APP') {
             steps {
