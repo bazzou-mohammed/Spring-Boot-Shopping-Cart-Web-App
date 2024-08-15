@@ -33,6 +33,7 @@ pipeline {
                 // Execute SonarQube analysis
                 script {
                     withSonarQubeEnv('sonar_server') {
+                        sh 'docker-compose up -d'
                         sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
                     }
                 }
