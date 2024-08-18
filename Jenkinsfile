@@ -75,7 +75,7 @@ pipeline {
             steps {
                 script {
                     // Deploy the WAR file to Tomcat server
-                    deploy adapters: [tomcat9(credentialsId: 'deployer', path: '', url: 'http://localhost:8081/')], contextPath: 'java-spring-app', war: '**/*.war'
+                    deploy adapters: [tomcat9(credentialsId: 'deployer', path: '', url: 'http://localhost:8081/')], contextPath: 'java-spring-app', war: '**/*.jar'
                 }
             }
         }
